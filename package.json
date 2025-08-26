@@ -13,10 +13,15 @@
 	"type": "module",
 	"dependencies": {
 		"@apollo/server": "^5.0.0",
+		"@libsql/client": "^0.15.14",
+		"dotenv": "^17.2.1",
+		"drizzle-orm": "^0.44.5",
 		"graphql": "^16.11.0"
 	},
 	"devDependencies": {
 		"@types/node": "^24.3.0",
+		"drizzle-kit": "^0.31.4",
+		"tsx": "^4.20.5",
 		"typescript": "^5.9.2"
 	}
 }
