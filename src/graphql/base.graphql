@@ -1,0 +1,12 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  _health: String!
+}
+
+type Mutation {
+  _noop: Boolean
+}
