@@ -1,12 +1,16 @@
 schema {
-  query: Query
-  mutation: Mutation
+	query: Query
+	mutation: Mutation
 }
 
 type Query {
-  _health: String!
+	_health: String!
 }
 
 type Mutation {
-  _noop: Boolean
+	_noop: Boolean
+}
+
+type Response {
+	success: Boolean!
 }
