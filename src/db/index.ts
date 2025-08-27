@@ -1,3 +1,3 @@
-export * from './guest.schema';
-export * from './card.schema';
-export * from './room.schema';
+export * from './guest.schema.js';
+export * from './card.schema.js';
+export * from './room.schema.js';
