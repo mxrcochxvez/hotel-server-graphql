@@ -1,0 +1,26 @@
+export async function response<FType extends Function, DType>(callback: FType): Promise<{
+	success: boolean,
+	data?: DType,
+	errorMessage?: string,
+}> {
+	try {
+		const result = await callback();
+
+		return {
+			success: true,
+			data: result,
+		}
+	} catch(error) {
+		if (error instanceof Error) {
+			return {
+				success: false,
+				errorMessage: error.message,
+			}
+		}
+		 
+		return {
+			success: false,
+			errorMessage: 'Internal Error',
+		}
+	}
+}
