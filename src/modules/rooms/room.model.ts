@@ -8,7 +8,7 @@ export enum RoomType {
 	KING = 'KING',
 }
 
-interface Room {
+export interface Room {
 	number: number
 	type: RoomType
 }
@@ -26,19 +26,11 @@ class RoomModel {
 		 });
 	}
 
-	async create({ type, number }: Room): Promise<boolean> {
-		try {
-			await this.#db.insert(roomsTable).values({
-				type,
-				number,
-			});
-
-			return true;
-		} catch(error: unknown) {
-			console.error(error);
-
-			return false;
-		}
+	create({ type, number }: Room) {
+		return this.#db.insert(roomsTable).values({
+			type,
+			number,
+		});
 	}
 }
 
