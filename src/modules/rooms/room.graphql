@@ -1,0 +1,33 @@
+enum RoomType {
+	SINGLE
+	DOUBLE
+	KING
+}
+
+type Room {
+	number: Int!
+	type: RoomType!
+}
+
+type GetRoomResponse implements Response {
+	success: Boolean!
+	data: Room
+}
+
+input CreateRoomInput {
+	number: Int!
+	type: RoomType!
+}
+
+type CreateRoomResponse implements Response {
+	success: Boolean!
+	errorMessage: String
+}
+
+extend type Query {
+	getRoom(number: Int!): GetRoomResponse!
+}
+
+extend type Mutation {
+	createRoom(input: CreateRoomInput!): CreateRoomResponse!
+}
