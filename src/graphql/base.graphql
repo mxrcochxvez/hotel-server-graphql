@@ -11,6 +11,6 @@ type Mutation {
 	_noop: Boolean
 }
 
-type Response {
+interface Response {
 	success: Boolean!
 }
