@@ -5,6 +5,4 @@ export const guestsTable = sqliteTable("guests", {
 	name: text().notNull(),
 	age: int().notNull(),
 	email: text().notNull().unique(),
-	checkinDate: text('checkin_date').notNull(),
-	checkoutDate: text('checkout_date').notNull(),
 });
