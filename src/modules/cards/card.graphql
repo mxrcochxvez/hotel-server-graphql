@@ -1,0 +1,7 @@
+type Card {
+	id: String
+}
+
+type Query {
+	test: String
+}
