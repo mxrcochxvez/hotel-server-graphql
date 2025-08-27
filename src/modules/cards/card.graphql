@@ -4,4 +4,5 @@ type Card {
 
 type Query {
 	test: String
+	getCard(id: String!): Card
 }
