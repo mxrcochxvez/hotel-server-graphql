@@ -6,10 +6,7 @@ type QueryMap = DBType["query"];
 type FindFirstOpts<Q> = Q extends { findFirst: (o?: infer O) => any } ? O : never;
 type FindManyOpts<Q>	= Q extends { findMany:	(o?: infer O) => any } ? O : never;
 
-export class BaseModel<
-	TKey extends keyof QueryMap,
-	TTable extends AnySQLiteTable
-> {
+export class BaseModel<TKey extends keyof QueryMap, TTable extends AnySQLiteTable> {
 	#db: DBType;
 	#key: TKey;
 	#table: TTable;
