@@ -35,7 +35,7 @@ class ReservationModel extends BaseModel<'reservationsTable', typeof reservation
 		});
 	}
 
-	isReservationActive({
+	findActiveReservation({
 		roomNumber,
 		checkinDate,
 		checkoutDate,

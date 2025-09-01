@@ -1,0 +1,23 @@
+type Reservation {
+	roomNumber: Int
+	checkinDate: String
+	checkoutDate: String
+	guestId: String
+	cardNumber: String
+}
+
+input ReservationInput {
+	roomNumber: Int
+	checkinDate: String
+	checkoutDate: String
+	cardNumber: String
+}
+
+type FindReservationResponse implements Response {
+	success: Boolean!
+	data: Reservation
+}
+
+extend type Query {
+	findReservation(reservationInput: ReservationInput!): FindReservationResponse!
+}
