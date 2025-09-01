@@ -1,6 +1,6 @@
 import type { AnySQLiteTable } from "drizzle-orm/sqlite-core";
 import type { InferInsertModel, InferSelectModel } from "drizzle-orm";
-import { DBType } from "../../repos/db/client";
+import { DBType } from "../../repos/db/client.js";
 
 type QueryMap = DBType["query"];
 type FindFirstOpts<Q> = Q extends { findFirst: (o?: infer O) => any } ? O : never;
