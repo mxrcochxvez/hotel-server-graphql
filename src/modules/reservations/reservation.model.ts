@@ -1,6 +1,6 @@
 import { and, eq, lte, gt } from "drizzle-orm";
 import { reservationsTable } from "../../db/index.js";
-import { DBType } from "../../repos/db/client.js";
+import { db, DBType } from "../../repos/db/client.js";
 import { AtLeastOne } from "../../utilities/atleast-one.js";
 import { BaseModel } from "../model/base.model.js";
 
@@ -73,3 +73,5 @@ class ReservationModel extends BaseModel<'reservationsTable', typeof reservation
 	}
 
 }
+
+const reservationModel = new ReservationModel(db);
