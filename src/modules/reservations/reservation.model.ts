@@ -12,7 +12,7 @@ type Reservation = {
 	cardNumber: string,
 }
 
-type SearchableReservationData = AtLeastOne<Reservation>;
+type SearchableReservationData = Partial<Reservation>;
 
 type ReservationInput =
 	Omit<Reservation, 'checkinDate' | 'checkoutDate'> & {
@@ -20,7 +20,7 @@ type ReservationInput =
 		checkoutDate: Date;
 	};
 
-const isoDate = (d: Date) => d.toISOString().slice(0, 10);
+const isoDate = (date: Date) => date.toISOString().slice(0, 10);
 
 class ReservationModel extends BaseModel<'reservationsTable', typeof reservationsTable> {
 	constructor(database: DBType) {
@@ -42,7 +42,7 @@ class ReservationModel extends BaseModel<'reservationsTable', typeof reservation
 		guestId,
 		cardNumber,
 	}: SearchableReservationData) {
-		const nowIso = new Date().toISOString();
+		const nowIso = isoDate(new Date());
 
 		const clauses: any[] = [];
 
@@ -56,12 +56,12 @@ class ReservationModel extends BaseModel<'reservationsTable', typeof reservation
 			clauses.push(eq(reservationsTable.cardNumber, cardNumber));
 		}
 		if (checkinDate !== undefined) {
-			const checkin = new Date(checkinDate).toISOString();
+			const checkin = isoDate(new Date(checkinDate));
 
 			clauses.push(eq(reservationsTable.checkinDate, checkin));
 		}
 		if (checkoutDate !== undefined) {
-			const checkout = new Date(checkoutDate).toISOString();
+			const checkout = isoDate(new Date(checkoutDate));
 
 			clauses.push(eq(reservationsTable.checkoutDate, checkout));
 		}
@@ -74,4 +74,4 @@ class ReservationModel extends BaseModel<'reservationsTable', typeof reservation
 
 }
 
-const reservationModel = new ReservationModel(db);
+export const reservationModel = new ReservationModel(db);
