@@ -1,4 +1,4 @@
-export async function response<CType extends Function, DType>(callback: CType): Promise<{
+export async function respond<CType extends Function, DType>(callback: CType): Promise<{
 	success: boolean,
 	data?: DType,
 	errorMessage?: string,
