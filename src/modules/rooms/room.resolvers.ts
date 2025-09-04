@@ -1,4 +1,4 @@
-import { response } from "../../utilities/graphql-response.js";
+import { respond } from "../../utilities/graphql-response.js";
 import { roomModel, type RoomType } from "./room.model.js";
 
 export default {
@@ -18,9 +18,9 @@ export default {
 }
 
 function findRoom(number: number) {
-	return response(() => roomModel.find(number));
+	return respond(() => roomModel.find(number));
 }
 
 function createRoom(number: number, type: RoomType) {
-	return response(() => roomModel.create({ number, type }));
+	return respond(() => roomModel.create({ number, type }));
 }
