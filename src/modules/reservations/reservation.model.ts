@@ -1,7 +1,6 @@
 import { and, eq, lte, gt } from "drizzle-orm";
 import { reservationsTable } from "../../db/index.js";
 import { db, DBType } from "../../repos/db/client.js";
-import { AtLeastOne } from "../../utilities/atleast-one.js";
 import { BaseModel } from "../model/base.model.js";
 
 type Reservation = {
@@ -9,16 +8,10 @@ type Reservation = {
 	checkinDate: string,
 	checkoutDate: string,
 	guestId: string,
-	cardNumber: string,
+	cardNumber?: string,
 }
 
 type SearchableReservationData = Partial<Reservation>;
-
-type ReservationInput =
-	Omit<Reservation, 'checkinDate' | 'checkoutDate'> & {
-		checkinDate: Date;
-		checkoutDate: Date;
-	};
 
 const isoDate = (date: Date) => date.toISOString().slice(0, 10);
 
@@ -27,12 +20,8 @@ class ReservationModel extends BaseModel<'reservationsTable', typeof reservation
 		super(database, 'reservationsTable', reservationsTable);
 	}
 
-	createReservation(reservation: ReservationInput) {
-		return this.create({
-			...reservation,
-			checkinDate: isoDate(reservation.checkinDate),
-			checkoutDate: isoDate(reservation.checkoutDate),
-		});
+	createReservation(reservation: Reservation) {
+		return this.create(reservation);
 	}
 
 	findActiveReservation({
