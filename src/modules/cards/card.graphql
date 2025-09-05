@@ -1,8 +1,23 @@
 type Card {
-	id: String
+	id: String!
+	roomNumber: Int
 }
 
-type Query {
-	test: String
+type ListAvailableCardsResponse implements Response {
+	success: Boolean!
+	data: [Card!]!
+}
+
+type BulkCreateResponse {
+	success: Boolean!
+	errorMessage: String
+}
+
+extend type Query {
+	listAvailableCards: ListAvailableCardsResponse!
 	getCard(id: String!): Card
+}
+
+extend type Mutation {
+	bulkCreate: BulkCreateResponse!
 }
