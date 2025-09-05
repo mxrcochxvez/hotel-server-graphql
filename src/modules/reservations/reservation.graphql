@@ -11,6 +11,17 @@ input ReservationInput {
 	checkinDate: String
 	checkoutDate: String
 	cardNumber: String
+	guestId: String
+}
+
+type ListReservationsResponse implements Response {
+	success: Boolean!
+	data: [Reservation!]!
+}
+
+type ListActiveReservationsResponse implements Response {
+	success: Boolean!
+	data: [Reservation!]!
 }
 
 type FindReservationResponse implements Response {
@@ -18,6 +29,17 @@ type FindReservationResponse implements Response {
 	data: Reservation
 }
 
+type CreateReservationInput implements Response {
+	success: Boolean!
+	errorMessage: String
+}
+
 extend type Query {
+	listReservations: ListReservationsResponse!
+	listActiveReservations: ListActiveReservationsResponse
 	findReservation(reservationInput: ReservationInput!): FindReservationResponse!
+}
+
+extend type Mutation {
+	createReservation(input: ReservationInput!): CreateReservationInput!
 }
