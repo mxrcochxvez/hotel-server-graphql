@@ -6,4 +6,5 @@ export const reservationsTable = sqliteTable("reservations", {
 	checkoutDate: text('checkout_date').notNull(),
 	guestId: text('guest_id').notNull(),
 	cardNumber: text('card_number'),
+	isActive: int('is_active').default(0),
 });
