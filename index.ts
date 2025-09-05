@@ -14,7 +14,7 @@ const typeDefsArray = loadFilesSync(path.join(__dirname, './src/modules/**/*.gra
 const typeDefs = mergeTypeDefs([baseTypeDefs, ...typeDefsArray]);
 
 const resolversArray = await loadFiles(
-  path.join(__dirname, './src/modules/**/*.resolvers.@(ts|js)')
+	path.join(__dirname, './src/modules/**/*.resolvers.@(ts|js)')
 );
 const resolvers = mergeResolvers(resolversArray);
 
