@@ -3,6 +3,10 @@ import { cardModel } from "./card.model.js";
 
 export default {
 	Query: {
+		listCards() {
+			return listCards();
+		},
+
 		listAvailableCards() {
 			return listAvailableCards();
 		}
@@ -13,6 +17,10 @@ export default {
 			return bulkCreate();
 		},
 	},
+}
+
+function listCards() {
+	return respond(() => cardModel.listCards());
 }
 
 function listAvailableCards() {

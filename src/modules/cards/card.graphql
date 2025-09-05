@@ -3,7 +3,7 @@ type Card {
 	roomNumber: Int
 }
 
-type ListAvailableCardsResponse implements Response {
+type ListCardsResponse implements Response {
 	success: Boolean!
 	data: [Card!]!
 }
@@ -14,7 +14,8 @@ type BulkCreateResponse {
 }
 
 extend type Query {
-	listAvailableCards: ListAvailableCardsResponse!
+	listCards: ListCardsResponse
+	listAvailableCards: ListCardsResponse!
 	getCard(id: String!): Card
 }
 
